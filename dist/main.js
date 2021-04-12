@@ -61,6 +61,65 @@ module.exports = __webpack_require__(/*! regenerator-runtime */ "./node_modules/
 
 /***/ }),
 
+/***/ "./src/helpers/ContentConstructor.js":
+/*!*******************************************!*\
+  !*** ./src/helpers/ContentConstructor.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _DiscountCalculator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DiscountCalculator */ "./src/helpers/DiscountCalculator.js");
+/* eslint-disable no-unused-expressions */
+
+
+var contentConstructor = function contentConstructor(element) {
+  var div = document.createElement('div');
+  var li = document.createElement('li');
+  var image = document.createElement('img');
+  var name = document.createElement('p');
+  var discount = document.createElement('p');
+  var categories = document.createElement('p');
+  var spanContainer = document.createElement('div');
+  var stars = document.createElement('div');
+  var price = document.createElement('div');
+  var oldPrice = document.createElement('div');
+  var basePrice = document.createElement('div');
+  var myDiscountVar = (0,_DiscountCalculator__WEBPACK_IMPORTED_MODULE_0__.default)(element.oldPrice, element.price);
+  discount.innerHTML = myDiscountVar !== 0 ? "-% ".concat(Math.floor(myDiscountVar)) : '';
+  stars.innerHTML = element.params.stars;
+  stars.setAttribute('class', 'd-none');
+  var ratings = stars.querySelector('.rating--count');
+  image.src = element.image;
+  li.innerHTML = element.productId;
+  price.innerHTML = element.price;
+  oldPrice.innerHTML = element.oldPrice;
+  name.innerHTML = element.name;
+  basePrice.innerHTML = element.params.basePrice;
+  categories.innerHTML = element.categories.map(function (item) {
+    return item;
+  });
+  div.appendChild(name);
+  div.appendChild(discount);
+  div.appendChild(stars);
+  ratings ? spanContainer.appendChild(ratings) : null;
+  spanContainer ? div.appendChild(spanContainer) : null;
+  div.appendChild(image);
+  div.appendChild(categories);
+  div.appendChild(price);
+  element.oldPrice ? div.appendChild(oldPrice) : null;
+  div.appendChild(basePrice);
+  div.appendChild(li);
+  document.body.appendChild(div);
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (contentConstructor);
+
+/***/ }),
+
 /***/ "./src/helpers/ContentFetcher.js":
 /*!***************************************!*\
   !*** ./src/helpers/ContentFetcher.js ***!
@@ -75,8 +134,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _DiscountCalculator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./DiscountCalculator */ "./src/helpers/DiscountCalculator.js");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../index.scss */ "./src/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../index.scss */ "./src/index.scss");
+/* harmony import */ var _ContentConstructor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ContentConstructor */ "./src/helpers/ContentConstructor.js");
 
 
 
@@ -86,14 +145,13 @@ __webpack_require__.r(__webpack_exports__);
 
 var contentFetcher = /*#__PURE__*/function () {
   var _ref = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee() {
-    var decoder, splittedText, div;
+    var decoder, splittedText;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
             decoder = new TextDecoder('utf-8');
             splittedText = null;
-            div = document.createElement('div');
             fetch('sample_products.txt').then(function (response) {
               return response.body;
             }).then(function (body) {
@@ -104,47 +162,12 @@ var contentFetcher = /*#__PURE__*/function () {
                   return el.split('= ');
                 });
                 Object.values(JSON.parse(splittedText[0][1])).forEach(function (element) {
-                  var li = document.createElement('li');
-                  var image = document.createElement('img');
-                  var name = document.createElement('p');
-                  var discount = document.createElement('p');
-                  var categories = document.createElement('p');
-                  var spanContainer = document.createElement('div');
-                  var stars = document.createElement('div');
-                  var price = document.createElement('div');
-                  var oldPrice = document.createElement('div');
-                  var basePrice = document.createElement('div');
-                  var myDiscountVar = (0,_DiscountCalculator__WEBPACK_IMPORTED_MODULE_2__.default)(element.oldPrice, element.price);
-                  discount.innerHTML = myDiscountVar !== 0 ? "-% ".concat(Math.floor(myDiscountVar)) : '';
-                  stars.innerHTML = element.params.stars;
-                  stars.setAttribute('class', 'd-none');
-                  var ratings = stars.querySelector('.rating--count');
-                  image.src = element.image;
-                  li.innerHTML = element.productId;
-                  price.innerHTML = element.price;
-                  oldPrice.innerHTML = element.oldPrice;
-                  name.innerHTML = element.name;
-                  basePrice.innerHTML = element.params.basePrice;
-                  categories.innerHTML = element.categories.map(function (item) {
-                    return item;
-                  });
-                  div.appendChild(name);
-                  div.appendChild(discount);
-                  div.appendChild(stars);
-                  ratings ? spanContainer.appendChild(ratings) : null;
-                  spanContainer ? div.appendChild(spanContainer) : null;
-                  div.appendChild(image);
-                  div.appendChild(categories);
-                  div.appendChild(price);
-                  element.oldPrice ? div.appendChild(oldPrice) : null;
-                  div.appendChild(basePrice);
-                  div.appendChild(li);
+                  (0,_ContentConstructor__WEBPACK_IMPORTED_MODULE_3__.default)(element);
                 });
-                document.body.appendChild(div);
               });
             });
 
-          case 4:
+          case 3:
           case "end":
             return _context.stop();
         }
