@@ -78,6 +78,9 @@ __webpack_require__.r(__webpack_exports__);
 
 var contentConstructor = function contentConstructor(element) {
   var div = document.createElement('div');
+  var heartSpan = document.createElement('span');
+  var categoriesContainer = document.createElement('div');
+  var priceContainer = document.createElement('div');
   var li = document.createElement('li');
   var image = document.createElement('img');
   var name = document.createElement('p');
@@ -95,24 +98,36 @@ var contentConstructor = function contentConstructor(element) {
   var ratings = stars.querySelector('.rating--count');
   image.src = element.image;
   li.innerHTML = element.productId;
-  price.innerHTML = element.price;
-  oldPrice.innerHTML = element.oldPrice;
+  price.innerHTML = "".concat(element.price, " \u20AC");
+  oldPrice.innerHTML = "".concat(element.oldPrice, " \u20AC");
   name.innerHTML = element.name;
   basePrice.innerHTML = element.params.basePrice;
   categories.innerHTML = element.categories.map(function (item) {
     return item;
   });
+  heartSpan.innerHTML = '&#128151';
   div.appendChild(name);
   div.appendChild(discount);
   div.appendChild(stars);
   ratings ? spanContainer.appendChild(ratings) : null;
+  ratings ? spanContainer.appendChild(heartSpan) : null;
   spanContainer ? div.appendChild(spanContainer) : null;
   div.appendChild(image);
-  div.appendChild(categories);
-  div.appendChild(price);
-  element.oldPrice ? div.appendChild(oldPrice) : null;
-  div.appendChild(basePrice);
+  categoriesContainer.appendChild(categories);
+  div.appendChild(categoriesContainer);
+  priceContainer.appendChild(price);
+  element.oldPrice ? priceContainer.appendChild(oldPrice) : null;
+  div.appendChild(priceContainer);
+  div.appendChild(basePrice); // element.oldPrice ? div.appendChild(oldPrice) : null;
+
   div.appendChild(li);
+  div.setAttribute('class', 'card');
+  discount.setAttribute('class', 'left-corner-span');
+  categoriesContainer.setAttribute('class', 'categories-container');
+  priceContainer.setAttribute('class', 'price-container-flex');
+  price.setAttribute('class', 'price');
+  oldPrice.setAttribute('class', 'old-price');
+  spanContainer.setAttribute('class', 'likes');
   document.body.appendChild(div);
 };
 
@@ -226,7 +241,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".purple-font {\n  color: purple;\n}\n\n.d-none {\n  display: none;\n}", "",{"version":3,"sources":["webpack://./src/index.scss"],"names":[],"mappings":"AAAA;EACE,aAAA;AACF;;AAEA;EACE,aAAA;AACF","sourcesContent":[".purple-font {\n  color: purple;\n}\n\n.d-none {\n  display: none;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "body {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n}\n\n.d-none {\n  display: none;\n}\n\n.categories-container {\n  width: 95%;\n}\n\np {\n  word-break: break-all;\n}\n\n.card {\n  background-color: #F7F7F7;\n  box-shadow: 5px 5px 5px grey;\n  text-align: center;\n  margin: 20px 10px;\n  padding: 10px 10px;\n  width: 30rem;\n  height: auto;\n}\n\nimg {\n  height: auto;\n  width: 100px;\n}\n\n.left-corner-span {\n  text-align: start;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  background-color: red;\n  padding: 5px 5px;\n  color: white;\n  font-weight: 700;\n}\n.left-corner-span:empty {\n  display: none;\n}\n\n.price-container-flex {\n  display: flex;\n  justify-content: center;\n}\n.price-container-flex .price {\n  font-weight: 900;\n  margin-right: 5px;\n  font-size: large;\n}\n.price-container-flex .old-price {\n  color: grey;\n  font-weight: 900;\n  font-size: large;\n  text-decoration: line-through;\n}\n\n.likes {\n  text-align: start;\n  font-weight: 900;\n  font-size: larger;\n  background-color: white;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  padding: 5px 5px;\n}\n.likes:empty {\n  display: none;\n}\n\n@media only screen and (max-width: 768px) {\n  .card {\n    width: 15rem;\n  }\n}", "",{"version":3,"sources":["webpack://./src/index.scss"],"names":[],"mappings":"AAAA;EACE,aAAA;EACA,eAAA;EACA,uBAAA;AACF;;AAEA;EACE,aAAA;AACF;;AAEA;EACE,UAAA;AACF;;AAEA;EACE,qBAAA;AACF;;AAEA;EACE,yBAAA;EACA,4BAAA;EACA,kBAAA;EACA,iBAAA;EACA,kBAAA;EACA,YAAA;EACA,YAAA;AACF;;AAEA;EACE,YAAA;EACA,YAAA;AACF;;AAEA;EACE,iBAAA;EACA,0BAAA;EAAA,uBAAA;EAAA,kBAAA;EACA,qBAAA;EACA,gBAAA;EACA,YAAA;EACA,gBAAA;AACF;AACE;EACE,aAAA;AACJ;;AAGA;EACE,aAAA;EACA,uBAAA;AAAF;AACE;EACE,gBAAA;EACA,iBAAA;EACA,gBAAA;AACJ;AAEE;EACE,WAAA;EACA,gBAAA;EACA,gBAAA;EACA,6BAAA;AAAJ;;AAIA;EACE,iBAAA;EACA,gBAAA;EACA,iBAAA;EACA,uBAAA;EACA,0BAAA;EAAA,uBAAA;EAAA,kBAAA;EACA,gBAAA;AADF;AAGE;EACE,aAAA;AADJ;;AAKA;EACE;IACE,YAAA;EAFF;AACF","sourcesContent":["body {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n}\n\n.d-none {\n  display: none;\n}\n\n.categories-container {\n  width: 95%;\n}\n\np {\n  word-break: break-all;\n}\n\n.card {\n  background-color: #F7F7F7;\n  box-shadow: 5px 5px 5px grey;\n  text-align: center;\n  margin: 20px 10px;\n  padding: 10px 10px;\n  width: 30rem;\n  height: auto;\n}\n\nimg {\n  height: auto;\n  width: 100px;\n}\n\n.left-corner-span {\n  text-align: start;\n  width: fit-content;\n  background-color: red;\n  padding: 5px 5px;\n  color: white;\n  font-weight: 700;\n\n  &:empty {\n    display: none;\n  }\n}\n\n.price-container-flex {\n  display: flex;\n  justify-content: center;\n  & .price {\n    font-weight: 900;\n    margin-right: 5px;\n    font-size: large;\n  }\n\n  & .old-price {\n    color: grey;\n    font-weight: 900;\n    font-size: large;\n    text-decoration: line-through;\n  }\n}\n\n.likes {\n  text-align: start;\n  font-weight: 900;\n  font-size: larger;\n  background-color: white;\n  width: fit-content;\n  padding: 5px 5px;\n\n  &:empty {\n    display: none;\n  }\n}\n\n@media only screen and (max-width: 768px) {\n  .card {\n    width: 15rem;\n  }\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
