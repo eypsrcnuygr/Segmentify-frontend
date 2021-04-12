@@ -75,6 +75,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _DiscountCalculator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./DiscountCalculator */ "./src/helpers/DiscountCalculator.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../index.scss */ "./src/index.scss");
+
+
+
+/* eslint-disable no-unused-expressions */
 
 
 
@@ -99,7 +105,39 @@ var contentFetcher = /*#__PURE__*/function () {
                 });
                 Object.values(JSON.parse(splittedText[0][1])).forEach(function (element) {
                   var li = document.createElement('li');
+                  var image = document.createElement('img');
+                  var name = document.createElement('p');
+                  var discount = document.createElement('p');
+                  var categories = document.createElement('p');
+                  var spanContainer = document.createElement('div');
+                  var stars = document.createElement('div');
+                  var price = document.createElement('div');
+                  var oldPrice = document.createElement('div');
+                  var basePrice = document.createElement('div');
+                  var myDiscountVar = (0,_DiscountCalculator__WEBPACK_IMPORTED_MODULE_2__.default)(element.oldPrice, element.price);
+                  discount.innerHTML = myDiscountVar !== 0 ? "-% ".concat(Math.floor(myDiscountVar)) : '';
+                  stars.innerHTML = element.params.stars;
+                  stars.setAttribute('class', 'd-none');
+                  var ratings = stars.querySelector('.rating--count');
+                  image.src = element.image;
                   li.innerHTML = element.productId;
+                  price.innerHTML = element.price;
+                  oldPrice.innerHTML = element.oldPrice;
+                  name.innerHTML = element.name;
+                  basePrice.innerHTML = element.params.basePrice;
+                  categories.innerHTML = element.categories.map(function (item) {
+                    return item;
+                  });
+                  div.appendChild(name);
+                  div.appendChild(discount);
+                  div.appendChild(stars);
+                  ratings ? spanContainer.appendChild(ratings) : null;
+                  spanContainer ? div.appendChild(spanContainer) : null;
+                  div.appendChild(image);
+                  div.appendChild(categories);
+                  div.appendChild(price);
+                  element.oldPrice ? div.appendChild(oldPrice) : null;
+                  div.appendChild(basePrice);
                   div.appendChild(li);
                 });
                 document.body.appendChild(div);
@@ -123,6 +161,28 @@ var contentFetcher = /*#__PURE__*/function () {
 
 /***/ }),
 
+/***/ "./src/helpers/DiscountCalculator.js":
+/*!*******************************************!*\
+  !*** ./src/helpers/DiscountCalculator.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* eslint-disable no-unused-expressions */
+var discountCalculator = function discountCalculator(oldPrice, newPrice) {
+  var result = 0;
+  oldPrice ? result = (oldPrice - newPrice) * 100 / oldPrice : result = 0;
+  return result;
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (discountCalculator);
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/index.scss":
 /*!***********************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
@@ -143,7 +203,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".purple-font {\n  color: purple;\n}", "",{"version":3,"sources":["webpack://./src/index.scss"],"names":[],"mappings":"AAAA;EACE,aAAA;AACF","sourcesContent":[".purple-font {\n  color: purple;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".purple-font {\n  color: purple;\n}\n\n.d-none {\n  display: none;\n}", "",{"version":3,"sources":["webpack://./src/index.scss"],"names":[],"mappings":"AAAA;EACE,aAAA;AACF;;AAEA;EACE,aAAA;AACF","sourcesContent":[".purple-font {\n  color: purple;\n}\n\n.d-none {\n  display: none;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
