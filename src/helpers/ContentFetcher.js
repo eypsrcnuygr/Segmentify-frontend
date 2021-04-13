@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-expressions */
-import '../index.scss';
+import '../assets/index.scss';
 import contentConstructor from './ContentConstructor';
 
 const contentFetcher = async () => {

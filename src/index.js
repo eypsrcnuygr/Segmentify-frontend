@@ -1,8 +1,9 @@
 import contentFetcher from './helpers/ContentFetcher';
-import './index.scss';
+import Sliding from './helpers/Sliding';
 
 const domContentCreator = () => {
   contentFetcher();
+  Sliding();
 };
 
 domContentCreator();

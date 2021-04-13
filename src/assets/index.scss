@@ -1,7 +1,8 @@
 body {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 10%;
 }
 
 .d-none {
@@ -74,8 +75,42 @@ img {
   }
 }
 
+.next {
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  font-size: 4rem;
+}
+
+.previous {
+  position: absolute;
+  left: 30px;
+  top: 50%;
+  font-size: 4rem;
+}
+
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
 @media only screen and (max-width: 768px) {
   .card {
     width: 15rem;
+  }
+  .next, .previous {
+    font-size: 1.5rem;
   }
 }

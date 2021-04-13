@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 /* eslint-disable no-unused-expressions */
 import discountCalculator from './DiscountCalculator';
 
@@ -42,9 +43,8 @@ const contentConstructor = (element) => {
   element.oldPrice ? priceContainer.appendChild(oldPrice) : null;
   div.appendChild(priceContainer);
   div.appendChild(basePrice);
-  // element.oldPrice ? div.appendChild(oldPrice) : null;
   div.appendChild(li);
-  div.setAttribute('class', 'card');
+  div.setAttribute('class', 'card fade');
   discount.setAttribute('class', 'left-corner-span');
   categoriesContainer.setAttribute('class', 'categories-container');
   priceContainer.setAttribute('class', 'price-container-flex');
@@ -52,6 +52,10 @@ const contentConstructor = (element) => {
   oldPrice.setAttribute('class', 'old-price');
   spanContainer.setAttribute('class', 'likes');
   document.body.appendChild(div);
+  const x = document.body.querySelectorAll('.card');
+  for (let i = 3; i < x.length; i++) {
+    x[i].classList.add('d-none');
+  }
 };
 
 export default contentConstructor;
