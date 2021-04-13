@@ -243,14 +243,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Sliding = function Sliding() {
-  var i = 3;
+  var i = 2;
   var next = document.body.querySelector('.next');
   next.addEventListener('click', function () {
     if (i < document.querySelectorAll('.card').length - 1) {
       jquery__WEBPACK_IMPORTED_MODULE_0___default()('.card:not(.d-none)')[0].classList.add('d-none');
       jquery__WEBPACK_IMPORTED_MODULE_0___default()('.card')[i += 1].classList.remove('d-none');
     } else {
-      i = 3;
+      i = 2;
       document.body.querySelectorAll('.card')[0].classList.remove('d-none');
       document.body.querySelectorAll('.card')[1].classList.remove('d-none');
       document.body.querySelectorAll('.card')[2].classList.remove('d-none');
